@@ -7,7 +7,7 @@ function App() {
   const [editId, setEditId] = useState(null)
   const [editValue, setEditValue] = useState('')
 
-  const API_URL = 'http://localhost:5000/api/items'
+  const API_URL = 'https://your-backend-domain.onrender.com/api/items'
 
   // Fetch todos on component mount
   useEffect(() => {
