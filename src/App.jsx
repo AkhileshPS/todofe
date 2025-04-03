@@ -7,7 +7,7 @@ function App() {
   const [editId, setEditId] = useState(null)
   const [editValue, setEditValue] = useState('')
 
-  const API_URL = 'https://your-backend-domain.onrender.com/api/items'
+  const API_URL = 'https://todobe-2.onrender.com/api/items'
 
   // Fetch todos on component mount
   useEffect(() => {
@@ -16,11 +16,21 @@ function App() {
 
   const fetchTodos = async () => {
     try {
-      const response = await fetch(API_URL)
-      const data = await response.json()
-      setTodos(data)
+      console.log('Fetching from:', API_URL);
+      const response = await fetch(API_URL);
+      console.log('Response:', response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log('Data received:', data);
+      setTodos(data);
     } catch (error) {
-      console.error('Error fetching todos:', error)
+      console.error('Error fetching todos:', error);
+      console.error('Error details:', {
+        message: error.message,
+        stack: error.stack
+      });
     }
   }
 
